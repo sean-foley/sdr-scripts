@@ -1,0 +1,7 @@
+# Use netcat to connect to the remote rtl_tcp ip:port 
+# and pipe that to dump1090 via stdin and offer up
+# a web based view from http://localhost:8080
+
+# Put your ip here
+IPADDRESS="XX.XX.XX.XX"
+nc $IPADDRESS 1234 | ./dump1090 --ifile - --interactive --net
