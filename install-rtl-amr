@@ -1,0 +1,18 @@
+
+sudo apt-get install -y golang
+
+# Set the go path - this is where any go stuff 
+# is built
+echo "GOPATH=\$HOME/go" >> ~/.profile
+
+# Add this to our path so we can easily run 
+# stuff we build
+echo PATH=\"\$HOME/go/bin:\$PATH\" >> ~/.profile
+
+# Reload the profile
+. ~/.profile
+
+
+# This will pull the code, build it, and
+# drop the binary in the GOPATH
+go get github.com/bemasher/rtlamr
