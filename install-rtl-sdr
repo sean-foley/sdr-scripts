@@ -1,0 +1,25 @@
+
+# make sure our package repo is up-to-date
+sudo apt-get update
+
+# We need these tools to build the rtl-sdr code
+sudo apt-get install -y git cmake build-essental libusb-1.0.0-dev
+
+cd ~
+git clone git://git.osmocom.org/rtl-sdr.git
+cd rtl-sdr
+mkdir build
+cd build
+
+# If you don't compile with detatching the kernel driver, you
+# will have problems when programs try to open the rtl-sdr device.
+# Installing the udev rules will allow access to the rtl-sdr
+# device without having to be a super user
+cmake ../ -DINSTALL_UDEV_RULES=ON -DDETACH_KERNEL_DRIVER=ON
+
+# Build the code
+make
+
+# Installs into /usr/local/bin
+sudo make install
+sudo ldconfig
