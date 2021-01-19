@@ -1,0 +1,17 @@
+# make sure our package repo is up-to-date
+sudo apt-get update
+
+# We need these tools to build the rtl-sdr code
+sudo apt-get install -y git cmake build-essental libusb-1.0.0-dev
+
+# switch to home directory
+cd ~
+
+# pull the project code
+git clone https://github.com/MalcolmRobb/dump1090.git
+
+# go to the code
+cd dump1090
+
+# this will compile and build
+make
